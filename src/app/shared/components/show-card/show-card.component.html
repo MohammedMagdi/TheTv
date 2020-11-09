@@ -1,0 +1,28 @@
+<nb-card>
+
+    <button class="menue-button" ghost nbButton [nbContextMenu]="items" shape="round" nbContextMenuTag="my-context-menu">
+        <nb-icon icon="more-horizontal"></nb-icon>
+    </button>
+
+    <circle-progress [percent]="tvShow.vote_average * 10" [radius]="15" [titleFontSize]="15" [unitsColor]="'#FFFFFF'"
+        [outerStrokeWidth]="2" [outerStrokeColor]="'#78C000'" [animation]="true" [animationDuration]="50"
+        [backgroundColor]="'#081C22'" [showInnerStroke]="false" [showSubtitle]="false" [titleColor]="'#FFFFFF'">
+    </circle-progress>
+
+    <a [routerLink]="['/shows/' + tvShow.id]" [title]="tvShow.name">
+        <img [src]="imageBaseURL + tvShow.poster_path" alt="tvShow Icon" />
+    </a>
+
+
+    <nb-card-footer class="text-center">
+
+        <div class="row">
+            <b [routerLink]="['/shows/' + tvShow.id]" [title]="tvShow.name">{{tvShow.name}}</b>
+        </div>
+        <div class="row">
+            <label>{{tvShow.first_air_date}}</label>
+        </div>
+
+    </nb-card-footer>
+
+</nb-card>

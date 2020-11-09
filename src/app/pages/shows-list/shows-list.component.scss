@@ -1,0 +1,12 @@
+.container {
+    margin-top: 50px;
+}
+
+.show-list {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}

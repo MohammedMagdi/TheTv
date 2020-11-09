@@ -1,8 +1,38 @@
-@import 'themes';
+@import "themes";
 
-@import '~@nebular/theme/styles/globals';
+@import "~@nebular/theme/styles/globals";
 
 @include nb-install() {
   @include nb-theme-global();
-};
+}
 /* You can add global styles to this file, and also import other style files */
+
+.nb-theme-default nb-layout-header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(3, 37, 65);
+  height: 64px;
+  width: 100vw;
+  z-index: 10;
+  transition: top 0.2s linear;
+}
+
+.nb-theme-default nb-layout-header.fixed ~ .layout-container {
+  padding-top: 0rem;
+  min-height: 100vh;
+}
+
+.nb-theme-default nb-layout .layout {
+  background-color: white;
+}
+
+/* .nb-theme-default [nbButton].appearance-ghost.status-basic {
+  color: #ffffff;
+} */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

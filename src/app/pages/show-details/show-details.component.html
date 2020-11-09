@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="details-container" *ngIf="tvShowDetails.id">
+
+        <div class="content">
+            <div class="row">
+                <div class="col-4">
+                    <img [src]="imageBaseURL + 'w300_and_h450_face' + tvShowDetails.poster_path"
+                        [title]="tvShowDetails.name" />
+                </div>
+                <div class="col-8">
+                    <div class="details">
+
+                        <div class="row">
+                            <h1><b>{{tvShowDetails.name}}</b></h1>
+                            <label><b>{{getShowGenrs()}}</b></label>
+                            <label style="margin-top: 10px;">Number of Episodes:
+                                <b>{{tvShowDetails.number_of_episodes}}</b></label>
+                            <label>Number of Seasons: <b>{{tvShowDetails.number_of_seasons}}</b></label>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-1">
+                                <label>Favorite: </label>
+                            </div>
+                            <div class="col">
+                                <button nbButton size="large" ghost (click)="toggleFavorite()">
+                                    <nb-icon icon="heart" [status]="showFavoriteStatus" title="favorite"></nb-icon>
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row" style="margin-top: 10px;">
+                            <label>Rate: <b>{{currentRate}}</b></label>
+                            <show-rating [rating]='currentRate' (ratingClick)='ratingComponentClick($event)'>
+                            </show-rating>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col">
+                                <circle-progress [percent]="tvShowDetails.vote_average * 10" [radius]="25"
+                                    [titleFontSize]="15" [unitsColor]="'#FFFFFF'" [outerStrokeWidth]="4"
+                                    [outerStrokeColor]="'#78C000'" [animation]="true" [animationDuration]="50"
+                                    [backgroundColor]="'#081C22'" [showInnerStroke]="false" [showSubtitle]="false"
+                                    [titleColor]="'#FFFFFF'">
+                                </circle-progress>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 10px;">
+                            <label><b>Networks:</b></label>
+                            <li *ngFor="let network of tvShowDetails.networks">
+                                <img [src]="imageBaseURL + 'h30' + network.logo_path" [title]="network.name" />
+                            </li>
+                        </div>
+
+                        <div class="row" style="margin-top: 20px;">
+                            <label><b>Overview:</b></label>
+                            <label>{{tvShowDetails.overview}}</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <ng-container>
+                <h6>Recommendations</h6>
+                <div class="row recommended-show-list">
+                    <div class="col" *ngFor="let tvShow of tvRecommendedList">
+                        <app-show-card [tvShow]="tvShow" *ngIf="tvShow.poster_path"></app-show-card>
+                    </div>
+                </div>
+            </ng-container>
+
+
+        </div>
+    </div>
+</div>

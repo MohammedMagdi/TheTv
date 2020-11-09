@@ -1,0 +1,21 @@
+<div class="container">
+
+    <div class="row">
+        <h6>Top Rating</h6>
+        <div class="row show-list">
+            <div class="col" *ngFor="let tvShow of tVShowsList">
+                <app-show-card  [tvShow]="tvShow"></app-show-card>
+            </div>
+        </div>
+    </div>
+   
+    <div class="row" style="margin-top: 20px;">
+        <h6>Favorite</h6>
+        <div class="row show-list">
+            <div class="col" *ngFor="let tvShow of tvShowsFavoriteList">
+                <app-show-card  [tvShow]="tvShow"></app-show-card>
+            </div>
+        </div>
+    </div>
+
+</div>
